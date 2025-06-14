@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><!-- TÍTULO DE TU PRESENTACIÓN --></title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/moon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/monokai.css">
+
+    <!-- Estilos personalizados opcionales -->
+    <style>
+        .reveal .slides section {
+            text-align: left;
+        }
+        .reveal .slides section h1,
+        .reveal .slides section h2,
+        .reveal .slides section h3 {
+            text-align: center;
+        }
+        .reveal .slides section .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- SLIDE 1: TÍTULO -->
+            <section>
+                <h1>🎯 Título Principal</h1>
+                <h3>Subtítulo</h3>
+                <p class="center">
+                    <small>Descripción breve de la presentación</small>
+                </p>
+            </section>
+
+            <!-- SLIDE 2: AGENDA -->
+            <section>
+                <h2>Agenda</h2>
+                <ul>
+                    <li>📋 Tema 1</li>
+                    <li>🔧 Tema 2</li>
+                    <li>⚙️ Tema 3</li>
+                    <li>🛠️ Tema 4</li>
+                    <li>🧘 Tema 5</li>
+                    <li>🌟 Tema 6</li>
+                </ul>
+            </section>
+
+            <!-- SECCIÓN PRINCIPAL 1 -->
+            <section>
+                <!-- Slide de introducción de sección -->
+                <section>
+                    <h2>🔧 Título de Sección</h2>
+                    <p>Descripción breve de lo que cubriremos</p>
+                </section>
+
+                <!-- Subsección con código -->
+                <section>
+                    <h3>Título del Concepto</h3>
+                    <p>Explicación del concepto</p>
+                    <pre><code class="python" data-trim>
+# Ejemplo de código Python
+def ejemplo():
+    print("Hola mundo")
+    return True
+
+# Uso del ejemplo
+resultado = ejemplo()
+                    </code></pre>
+                </section>
+
+                <!-- Subsección con comparación -->
+                <section>
+                    <h3>Comparación: Antes vs Después</h3>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div style="width: 45%;">
+                            <h4>❌ Manera tradicional</h4>
+                            <pre><code class="python" data-trim>
+# Código menos eficiente
+traditional_way = []
+for item in items:
+    if condition(item):
+                            </code></pre>
+                        </div>
+                        <div style="width: 45%;">
+                            <h4>✅ Manera moderna</h4>
+                            <pre><code class="python" data-trim>
+# Código más eficiente
+modern_way = [item for item in items
+              if condition(item)]
+                            </code></pre>
+                        </div>
+                    </div>
+                    <p><small>💡 Tip: La manera moderna es más legible y eficiente</small></p>
+                </section>
+
+                <!-- Subsección con fragmentos -->
+                <section>
+                    <h3>Puntos Clave</h3>
+                    <ul>
+                        <li class="fragment">🎯 Punto importante 1</li>
+                        <li class="fragment">⚡ Punto importante 2</li>
+                        <li class="fragment">🔥 Punto importante 3</li>
+                    </ul>
+                    <div class="fragment">
+                        <pre><code class="python" data-trim>
+# Código que aparece al final
+resultado = proceso_complejo()
+                        </code></pre>
+                    </div>
+                </section>
+            </section>
+
+            <!-- SECCIÓN PRINCIPAL 2 -->
+            <section>
+                <section>
+                    <h2>⚙️ Segunda Sección</h2>
+                    <p>Otra área importante a cubrir</p>
+                </section>
+
+                <!-- Ejemplo con comandos de terminal -->
+                <section>
+                    <h3>Herramientas de Línea de Comandos</h3>
+                    <pre><code class="bash" data-trim>
+# Comando útil 1
+python -m modulo parametros
+
+# Comando útil 2
+pip install paquete
+
+# Comando avanzado
+python -c "import modulo; print(modulo.funcion())"
+                    </code></pre>
+                </section>
+
+                <!-- Ejemplo con múltiples lenguajes -->
+                <section>
+                    <h3>Interoperabilidad</h3>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div style="width: 45%;">
+                            <h4>Python</h4>
+                            <pre><code class="python" data-trim>
+import subprocess
+
+result = subprocess.run([
+    'comando', 'parametro'
+], capture_output=True)
+                            </code></pre>
+                        </div>
+                        <div style="width: 45%;">
+                            <h4>JavaScript</h4>
+                            <pre><code class="javascript" data-trim>
+const { exec } = require('child_process');
+
+exec('python script.py', (err, stdout) => {
+    console.log(stdout);
+});
+                            </code></pre>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- SECCIÓN CON TABLA -->
+            <section>
+                <section>
+                    <h2>📊 Comparación de Opciones</h2>
+                </section>
+
+                <section>
+                    <h3>Tabla Comparativa</h3>
+                    <table style="font-size: 0.8em;">
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>Opción A</th>
+                                <th>Opción B</th>
+                                <th>Opción C</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Performance</td>
+                                <td>⭐⭐⭐</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                                <td>⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td>Facilidad de uso</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                                <td>⭐⭐⭐</td>
+                                <td>⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td>Comunidad</td>
+                                <td>⭐⭐⭐⭐</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                                <td>⭐⭐</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+
+            <!-- SECCIÓN DE MEJORES PRÁCTICAS -->
+            <section>
+                <section>
+                    <h2>💎 Mejores Prácticas</h2>
+                    <p>Consejos y recomendaciones</p>
+                </section>
+
+                <section>
+                    <h3>✅ Haz esto</h3>
+                    <pre><code class="python" data-trim>
+# Código que sigue las mejores prácticas
+def funcion_clara(parametro: str) -> str:
+    """
+    Documentación clara de lo que hace la función.
+
+    Args:
+        parametro: Descripción del parámetro
+
+    Returns:
+        Descripción del valor de retorno
+    """
+    return parametro.upper()
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>❌ Evita esto</h3>
+                    <pre><code class="python" data-trim>
+# Código problemático
+def f(x):
+    # Sin documentación
+    return x.upper()  # ¿Qué pasa si x no es string?
+                    </code></pre>
+                    <p><small>⚠️ Problemas: Sin tipos, sin documentación, sin validación</small></p>
+                </section>
+            </section>
+
+            <!-- SECCIÓN DE CASOS DE USO -->
+            <section>
+                <section>
+                    <h2>🎯 Casos de Uso</h2>
+                    <p>Aplicaciones prácticas</p>
+                </section>
+
+                <section>
+                    <h3>Caso 1: Automatización</h3>
+                    <pre><code class="python" data-trim>
+# Ejemplo de automatización
+import os
+from pathlib import Path
+
+def organizar_archivos(directorio):
+    """Organiza archivos por extensión."""
+    base_path = Path(directorio)
+
+    for archivo in base_path.glob('*.*'):
+        extension = archivo.suffix[1:]  # Sin el punto
+        carpeta_destino = base_path / extension
+        carpeta_destino.mkdir(exist_ok=True)
+        archivo.rename(carpeta_destino / archivo.name)
+
+# Uso
+organizar_archivos('/ruta/a/descargas')
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Caso 2: Análisis de Datos</h3>
+                    <pre><code class="python" data-trim>
+# Ejemplo de análisis básico
+from collections import Counter
+import json
+
+def analizar_logs(archivo_log):
+    """Analiza logs y extrae estadísticas."""
+    with open(archivo_log, 'r') as f:
+        lineas = f.readlines()
+
+    # Contar códigos de estado
+    codigos = [linea.split()[8] for linea in lineas
+               if len(linea.split()) > 8]
+    contador = Counter(codigos)
+
+    return dict(contador)
+
+# Uso
+stats = analizar_logs('access.log')
+print(json.dumps(stats, indent=2))
+                    </code></pre>
+                </section>
+            </section>
+
+            <!-- CONCLUSIÓN -->
+            <section>
+                <h2>🎯 Conclusión</h2>
+                <ul>
+                    <li class="fragment">📝 Punto clave 1</li>
+                    <li class="fragment">🔧 Punto clave 2</li>
+                    <li class="fragment">⚡ Punto clave 3</li>
+                    <li class="fragment">🌟 Punto clave 4</li>
+                </ul>
+                <br>
+                <div class="fragment">
+                    <h3>¡Próximos pasos!</h3>
+                    <p><small>Recomendaciones para continuar aprendiendo</small></p>
+                </div>
+            </section>
+
+            <!-- SLIDE FINAL -->
+            <section>
+                <h1>¡Gracias!</h1>
+                <h3>🤔 ¿Preguntas?</h3>
+                <p class="center">
+                    <small>Información de contacto o recursos adicionales</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <!-- Scripts de Reveal.js -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/highlight.js"></script>
+
+    <script>
+        // Configuración de Reveal.js
+        Reveal.initialize({
+            // Habilitar hash para navegación
+            hash: true,
+
+            // Plugins
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+
+            // Transiciones
+            transition: 'slide',
+            backgroundTransition: 'fade',
+
+            // Configuración adicional
+            controls: true,
+            progress: true,
+            center: true,
+            touch: true,
+            loop: false,
+            rtl: false,
+            shuffle: false,
+            fragments: true,
+            embedded: false,
+            help: true,
+            showNotes: false,
+            autoSlide: 0,
+            autoSlideStoppable: true,
+            mouseWheel: false,
+            hideAddressBar: true,
+            previewLinks: false,
+            focusBodyOnPageVisibilityChange: true,
+
+            // Tema y apariencia
+            theme: 'moon', // black, white, league, beige, sky, night, serif, simple, solarized
+
+            // Configuración de código
+            highlight: {
+                highlightOnLoad: true,
+                tabReplace: '  '
+            }
+        });
+
+        // Eventos personalizados (opcional)
+        Reveal.addEventListener('ready', function(event) {
+            console.log('Presentación lista');
+        });
+
+        Reveal.addEventListener('slidechanged', function(event) {
+            console.log('Slide:', event.indexh, event.indexv);
+        });
+    </script>
+</body>
+</html>
+
+<!--
+INSTRUCCIONES DE USO DEL TEMPLATE:
+
+1. PERSONALIZACIÓN BÁSICA:
+   - Cambia el título en <title> y en el primer slide
+   - Actualiza la agenda con tus temas
+   - Usa emojis consistentes para cada sección
+
+2. ESTRUCTURA DE SECCIONES:
+   - Cada <section> principal representa un capítulo
+   - Las sub-<section> dentro son slides individuales
+   - Usa data-background para fondos personalizados
+
+3. TIPOS DE SLIDES INCLUIDOS:
+   - Slide de título
+   - Agenda
+   - Introducción de sección
+   - Código con sintaxis highlighting
+   - Comparaciones lado a lado
+   - Fragmentos animados (.fragment)
+   - Tablas
+   - Mejores prácticas
+   - Casos de uso
+   - Conclusión
+
+4. CÓDIGO:
+   - Usa class="python", "javascript", "bash", etc.
+   - data-trim elimina espacios extra
+   - Los comentarios ayudan a explicar
+
+5. FRAGMENTOS:
+   - class="fragment" hace que aparezcan gradualmente
+   - Se pueden anidar para efectos complejos
+
+6. NAVEGACIÓN:
+   - Flechas del teclado
+   - Esc para vista general
+   - S para notas del presentador
+   - F para pantalla completa
+
+7. TEMAS DISPONIBLES:
+   - moon (actual), black, white, league, beige, sky, night, serif, simple, solarized
+   - Cambia en la línea del CSS y en la configuración JS
+
+8. PERSONALIZACIÓN AVANZADA:
+   - Modifica los estilos CSS en <style>
+   - Ajusta la configuración de Reveal.initialize()
+   - Añade plugins adicionales si necesitas
+
+9. TIPS:
+   - Mantén slides simples y enfocados
+   - Usa colores consistentes
+   - No sobrecargues con texto
+   - Prueba en diferentes tamaños de pantalla
+   - Las notas del presentador van en <aside class="notes">
+
+10. RECURSOS:
+    - Documentación: https://revealjs.com/
+    - Temas: https://revealjs.com/themes/
+    - Plugins: https://revealjs.com/plugins/
+-->

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primera Presentación con el Template</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/moon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/monokai.css">
+
+    <!-- Estilos personalizados opcionales -->
+    <style>
+        .reveal .slides section {
+            text-align: left;
+        }
+        .reveal .slides section h1,
+        .reveal .slides section h2,
+        .reveal .slides section h3 {
+            text-align: center;
+        }
+        .reveal .slides section .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- SLIDE 1: TÍTULO -->
+            <section>
+                <h1>🚀 Mi Proyecto</h1>
+                <h3>Una introducción práctica</h3>
+                <p class="center">
+                    <small>Ejemplo de uso del template</small>
+                </p>
+            </section>
+
+            <!-- SLIDE 2: AGENDA -->
+            <section>
+                <h2>¿Qué veremos?</h2>
+                <ul>
+                    <li>💡 El problema</li>
+                    <li>🔧 La solución</li>
+                    <li>📊 Resultados</li>
+                    <li>🎯 Conclusiones</li>
+                </ul>
+            </section>
+
+            <!-- SECCIÓN 1: EL PROBLEMA -->
+            <section>
+                <section>
+                    <h2>💡 El Problema</h2>
+                    <p>¿Qué necesitábamos resolver?</p>
+                </section>
+
+                <section>
+                    <h3>Situación Actual</h3>
+                    <ul>
+                        <li class="fragment">❌ Proceso manual lento</li>
+                        <li class="fragment">❌ Propenso a errores</li>
+                        <li class="fragment">❌ Difícil de escalar</li>
+                    </ul>
+                    <div class="fragment">
+                        <p><strong>Resultado:</strong> Pérdida de tiempo y recursos</p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- SECCIÓN 2: LA SOLUCIÓN -->
+            <section>
+                <section>
+                    <h2>🔧 La Solución</h2>
+                    <p>Cómo lo resolvimos</p>
+                </section>
+
+                <section>
+                    <h3>Automatización con Python</h3>
+                    <pre><code class="python" data-trim>
+def procesar_datos(archivo):
+    """
+    Procesa datos automáticamente.
+    """
+    with open(archivo, 'r') as f:
+        datos = f.read()
+
+    # Procesar datos
+    resultado = datos.strip().upper()
+
+    return resultado
+
+# Uso simple
+resultado = procesar_datos('input.txt')
+print(f"Procesado: {resultado}")
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Antes vs Después</h3>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div style="width: 45%;">
+                            <h4>❌ Proceso Manual</h4>
+                            <ul style="font-size: 0.8em;">
+                                <li>2 horas de trabajo</li>
+                                <li>15% de errores</li>
+                                <li>Difícil de repetir</li>
+                            </ul>
+                        </div>
+                        <div style="width: 45%;">
+                            <h4>✅ Proceso Automatizado</h4>
+                            <ul style="font-size: 0.8em;">
+                                <li>5 minutos de ejecución</li>
+                                <li>0% de errores</li>
+                                <li>Repetible y escalable</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="center"><small>💡 96% de mejora en eficiencia</small></p>
+                </section>
+            </section>
+
+            <!-- SECCIÓN 3: RESULTADOS -->
+            <section>
+                <section>
+                    <h2>📊 Resultados</h2>
+                    <p>El impacto de la solución</p>
+                </section>
+
+                <section>
+                    <h3>Métricas de Impacto</h3>
+                    <table style="font-size: 0.8em;">
+                        <thead>
+                            <tr>
+                                <th>Métrica</th>
+                                <th>Antes</th>
+                                <th>Después</th>
+                                <th>Mejora</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tiempo de proceso</td>
+                                <td>2 horas</td>
+                                <td>5 minutos</td>
+                                <td>🚀 96%</td>
+                            </tr>
+                            <tr>
+                                <td>Tasa de errores</td>
+                                <td>15%</td>
+                                <td>0%</td>
+                                <td>✅ 100%</td>
+                            </tr>
+                            <tr>
+                                <td>Costo por proceso</td>
+                                <td>$50</td>
+                                <td>$2</td>
+                                <td>💰 96%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+
+            <!-- CONCLUSIONES -->
+            <section>
+                <h2>🎯 Conclusiones</h2>
+                <ul>
+                    <li class="fragment">🚀 La automatización transforma procesos</li>
+                    <li class="fragment">🐍 Python es ideal para estas tareas</li>
+                    <li class="fragment">📈 ROI inmediato y sostenible</li>
+                    <li class="fragment">🔄 Escalable a otros procesos</li>
+                </ul>
+                <br>
+                <div class="fragment">
+                    <h3>¡Próximos pasos!</h3>
+                    <p><small>Implementar en otros departamentos</small></p>
+                </div>
+            </section>
+
+            <!-- SLIDE FINAL -->
+            <section>
+                <h1>¡Gracias!</h1>
+                <h3>🤔 ¿Preguntas?</h3>
+                <p class="center">
+                    <small>¿Cómo podemos ayudarte a automatizar tus procesos?</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <!-- Scripts de Reveal.js -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/highlight.js"></script>
+
+    <script>
+        // Configuración de Reveal.js
+        Reveal.initialize({
+            hash: true,
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+            transition: 'slide',
+            backgroundTransition: 'fade'
+        });
+    </script>
+</body>
+</html>

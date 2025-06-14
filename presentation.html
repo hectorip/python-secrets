@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secretos de Python: Características Poco Conocidas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/theme/moon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/monokai.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Título -->
+            <section>
+                <h1>🐍 Secretos de Python</h1>
+                <h3>Características Poco Conocidas</h3>
+                <p>
+                    <small>Descubre las gemas ocultas de Python</small>
+                </p>
+            </section>
+
+            <!-- Agenda -->
+            <section>
+                <h2>Agenda</h2>
+                <ul>
+                    <li>🔧 Biblioteca Estándar</li>
+                    <li>⚙️ Intérpretes</li>
+                    <li>🛠️ Tooling</li>
+                    <li>🧘 Filosofía</li>
+                    <li>🔗 Interoperabilidad</li>
+                    <li>🌟 Desarrollos de la Comunidad</li>
+                </ul>
+            </section>
+
+            <!-- Biblioteca Estándar -->
+            <section>
+                <section>
+                    <h2>🔧 Biblioteca Estándar</h2>
+                    <p>Tesoros escondidos en la biblioteca estándar</p>
+                </section>
+
+                <section>
+                    <h3>collections.ChainMap</h3>
+                    <p>Combina múltiples diccionarios en una vista</p>
+                    <pre><code class="python" data-trim>
+from collections import ChainMap
+
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'b': 3, 'c': 4}
+chain = ChainMap(dict1, dict2)
+
+print(chain['a'])  # 1
+print(chain['b'])  # 2 (primer dict tiene prioridad)
+print(chain['c'])  # 4
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>functools.singledispatch</h3>
+                    <p>Sobrecarga de funciones basada en tipos</p>
+                    <pre><code class="python" data-trim>
+from functools import singledispatch
+
+@singledispatch
+def process(arg):
+    print(f"Processing {arg}")
+
+@process.register
+def _(arg: int):
+    print(f"Processing integer: {arg * 2}")
+
+@process.register
+def _(arg: str):
+    print(f"Processing string: {arg.upper()}")
+
+process(42)      # Processing integer: 84
+process("hello") # Processing string: HELLO
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>contextlib.contextmanager</h3>
+                    <p>Context managers con decoradores</p>
+                    <pre><code class="python" data-trim>
+from contextlib import contextmanager
+import time
+
+@contextmanager
+def timer():
+    start = time.time()
+    try:
+        yield
+    finally:
+        elapsed = time.time() - start
+        print(f"Tiempo: {elapsed:.2f}s")
+
+with timer():
+    time.sleep(1)
+    print("Procesando...")
+# Output: Procesando...
+#         Tiempo: 1.00s
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>pathlib - Rutas modernas</h3>
+                    <p>API orientada a objetos para rutas</p>
+                    <pre><code class="python" data-trim>
+from pathlib import Path
+
+# Construcción de rutas
+path = Path.home() / "documents" / "file.txt"
+
+# Operaciones
+if path.exists():
+    content = path.read_text()
+    
+# Crear directorios
+path.parent.mkdir(parents=True, exist_ok=True)
+
+# Información del archivo
+print(path.suffix)  # .txt
+print(path.stem)    # file
+print(path.parent)  # /home/user/documents
+                    </code></pre>
+                </section>
+            </section>
+
+            <!-- Intérpretes -->
+            <section>
+                <section>
+                    <h2>⚙️ Intérpretes</h2>
+                    <p>Secretos del intérprete de Python</p>
+                </section>
+
+                <section>
+                    <h3>REPL y el underscore mágico</h3>
+                    <p>El <code>_</code> guarda el último resultado</p>
+                    <pre><code class="python" data-trim>
+>>> 5 + 3
+8
+>>> _ * 2
+16
+>>> result = _
+>>> result
+16
+>>> "hello " + "world"
+'hello world'
+>>> _.upper()
+'HELLO WORLD'
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Method Resolution Order (MRO)</h3>
+                    <p>Cómo Python resuelve herencia múltiple</p>
+                    <pre><code class="python" data-trim>
+class A:
+    def method(self): print("A")
+
+class B(A):
+    def method(self): print("B") 
+
+class C(A):
+    def method(self): print("C")
+
+class D(B, C):
+    pass
+
+print(D.__mro__)
+# (<class '__main__.D'>, <class '__main__.B'>, 
+#  <class '__main__.C'>, <class '__main__.A'>, 
+#  <class 'object'>)
+
+D().method()  # Output: B
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Desensamblador - dis module</h3>
+                    <p>Ve el bytecode de tus funciones</p>
+                    <pre><code class="python" data-trim>
+import dis
+
+def fibonacci(n):
+    a, b = 0, 1
+    for i in range(n):
+        a, b = b, a + b
+    return a
+
+dis.dis(fibonacci)
+                    </code></pre>
+                    <p><small>Muestra las instrucciones de bytecode que ejecuta CPython</small></p>
+                </section>
+            </section>
+
+            <!-- Tooling -->
+            <section>
+                <section>
+                    <h2>🛠️ Tooling</h2>
+                    <p>Herramientas poderosas integradas</p>
+                </section>
+
+                <section>
+                    <h3>python -m: El Swiss Army Knife</h3>
+                    <pre><code class="bash" data-trim>
+# Servidor HTTP simple
+python -m http.server
+
+# Formatear JSON
+python -m json.tool file.json
+
+# Debugger
+python -m pdb script.py
+
+# Timing de código
+python -m timeit "sum(range(100))"
+
+# Crear archivos ZIP
+python -m zipfile -c archive.zip file1.py file2.py
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>f-strings avanzados</h3>
+                    <p>Más que simple interpolación</p>
+                    <pre><code class="python" data-trim>
+name = "Python"
+value = 42.123456
+
+# Formateo avanzado
+print(f"{name:>10}")      # "    Python"
+print(f"{value:.2f}")     # "42.12"
+print(f"{value:e}")       # "4.212346e+01"
+
+# Debugging (Python 3.8+)
+print(f"{name=}")         # name='Python'
+print(f"{value=:.2f}")    # value=42.12
+
+# Expresiones complejas
+items = ['a', 'b', 'c']
+print(f"{len(items)=}")   # len(items)=3
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>breakpoint() - Debug moderno</h3>
+                    <p>Debugging integrado (Python 3.7+)</p>
+                    <pre><code class="python" data-trim>
+def complex_calculation(x, y):
+    result = x * 2
+    breakpoint()  # Pausa aquí automáticamente
+    result += y
+    return result
+
+# Se puede controlar con variables de entorno
+# PYTHONBREAKPOINT=0 python script.py  # Desactivar
+# PYTHONBREAKPOINT=pdb.set_trace python script.py
+                    </code></pre>
+                </section>
+            </section>
+
+            <!-- Filosofía -->
+            <section>
+                <section>
+                    <h2>🧘 Filosofía</h2>
+                    <p>Los principios que guían Python</p>
+                </section>
+
+                <section>
+                    <h3>The Zen of Python</h3>
+                    <pre><code class="python" data-trim>
+import this
+                    </code></pre>
+                    <div class="fragment">
+                        <ul style="font-size: 0.8em;">
+                            <li>Beautiful is better than ugly</li>
+                            <li>Explicit is better than implicit</li>
+                            <li>Simple is better than complex</li>
+                            <li>Readability counts</li>
+                            <li>There should be one obvious way to do it</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>EAFP vs LBYL</h3>
+                    <p><strong>EAFP:</strong> Easier to Ask for Forgiveness than Permission</p>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div style="width: 45%;">
+                            <h4>Pythonic (EAFP)</h4>
+                            <pre><code class="python" data-trim>
+try:
+    value = dictionary[key]
+except KeyError:
+    value = default_value
+                            </code></pre>
+                        </div>
+                        <div style="width: 45%;">
+                            <h4>LBYL</h4>
+                            <pre><code class="python" data-trim>
+if key in dictionary:
+    value = dictionary[key]
+else:
+    value = default_value
+                            </code></pre>
+                        </div>
+                    </div>
+                    <p><small>EAFP es más rápido cuando el caso exitoso es común</small></p>
+                </section>
+
+                <section>
+                    <h3>Duck Typing</h3>
+                    <p>"If it walks like a duck and quacks like a duck, it's a duck"</p>
+                    <pre><code class="python" data-trim>
+class Duck:
+    def quack(self): return "Quack!"
+    def fly(self): return "Flying!"
+
+class Airplane:
+    def fly(self): return "Flying high!"
+
+class Robot:
+    def quack(self): return "Beep quack!"
+
+def make_it_fly(thing):
+    return thing.fly()  # No importa el tipo
+
+make_it_fly(Duck())      # "Flying!"
+make_it_fly(Airplane())  # "Flying high!"
+                    </code></pre>
+                </section>
+            </section>
+
+            <!-- Interoperabilidad -->
+            <section>
+                <section>
+                    <h2>🔗 Interoperabilidad</h2>
+                    <p>Python juega bien con otros</p>
+                </section>
+
+                <section>
+                    <h3>ctypes - Llamar bibliotecas C</h3>
+                    <pre><code class="python" data-trim>
+import ctypes
+
+# Cargar biblioteca del sistema
+libc = ctypes.CDLL("libc.so.6")  # Linux
+# libc = ctypes.CDLL("msvcrt.dll")  # Windows
+
+# Llamar función C
+libc.printf(b"Hello from C!\n")
+
+# Funciones matemáticas
+libm = ctypes.CDLL("libm.so.6")
+libm.cos.argtypes = [ctypes.c_double]
+libm.cos.restype = ctypes.c_double
+print(libm.cos(0))  # 1.0
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>subprocess - Ejecutar programas</h3>
+                    <pre><code class="python" data-trim>
+import subprocess
+
+# Ejecutar y capturar salida
+result = subprocess.run(
+    ['ls', '-la'], 
+    capture_output=True, 
+    text=True
+)
+print(result.stdout)
+
+# Con shell
+result = subprocess.run(
+    'echo "Hello World" | wc -w', 
+    shell=True, 
+    capture_output=True, 
+    text=True
+)
+print(f"Palabras: {result.stdout.strip()}")
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>multiprocessing - Paralelismo real</h3>
+                    <pre><code class="python" data-trim>
+from multiprocessing import Pool
+import time
+
+def cpu_intensive_task(n):
+    # Simular trabajo CPU-intensivo
+    total = 0
+    for i in range(n * 1000000):
+        total += i
+    return total
+
+# Secuencial
+start = time.time()
+results = [cpu_intensive_task(100) for _ in range(4)]
+sequential_time = time.time() - start
+
+# Paralelo
+start = time.time()
+with Pool() as pool:
+    results = pool.map(cpu_intensive_task, [100] * 4)
+parallel_time = time.time() - start
+
+print(f"Secuencial: {sequential_time:.2f}s")
+print(f"Paralelo: {parallel_time:.2f}s")
+                    </code></pre>
+                </section>
+            </section>
+
+            <!-- Desarrollos de la Comunidad -->
+            <section>
+                <section>
+                    <h2>🌟 Desarrollos de la Comunidad</h2>
+                    <p>Innovaciones que revolucionaron Python</p>
+                </section>
+
+                <section>
+                    <h3>FastAPI - Web APIs modernas</h3>
+                    <pre><code class="python" data-trim>
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class Item(BaseModel):
+    name: str
+    price: float
+    is_offer: bool = False
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+@app.post("/items/")
+async def create_item(item: Item):
+    return {"item_name": item.name, "item_price": item.price}
+
+# Documentación automática en /docs
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Rich - Terminal con estilo</h3>
+                    <pre><code class="python" data-trim>
+from rich.console import Console
+from rich.table import Table
+from rich.progress import track
+import time
+
+console = Console()
+
+# Texto con estilo
+console.print("Hello", style="bold red")
+console.print("World", style="blue on yellow")
+
+# Tablas
+table = Table(title="Resultados")
+table.add_column("Nombre", style="cyan")
+table.add_column("Puntuación", style="magenta")
+table.add_row("Alice", "95")
+table.add_row("Bob", "87")
+console.print(table)
+
+# Barras de progreso
+for i in track(range(100), description="Procesando..."):
+    time.sleep(0.01)
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Typer - CLIs con type hints</h3>
+                    <pre><code class="python" data-trim>
+import typer
+from typing import Optional
+
+def main(
+    name: str,
+    age: int = typer.Option(25, help="Edad del usuario"),
+    formal: bool = typer.Option(False, "--formal", "-f")
+):
+    """
+    Saludar a alguien de manera personalizada.
+    """
+    greeting = "Buenos días" if formal else "Hola"
+    typer.echo(f"{greeting} {name}, tienes {age} años")
+
+if __name__ == "__main__":
+    typer.run(main)
+
+# python script.py Alice --age 30 --formal
+# Buenos días Alice, tienes 30 años
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>AsyncIO - Programación asíncrona</h3>
+                    <pre><code class="python" data-trim>
+import asyncio
+import aiohttp
+import time
+
+async def fetch_url(session, url):
+    async with session.get(url) as response:
+        return await response.text()
+
+async def main():
+    urls = [
+        'http://httpbin.org/delay/1',
+        'http://httpbin.org/delay/1',
+        'http://httpbin.org/delay/1'
+    ]
+    
+    async with aiohttp.ClientSession() as session:
+        start = time.time()
+        # Ejecutar en paralelo
+        tasks = [fetch_url(session, url) for url in urls]
+        results = await asyncio.gather(*tasks)
+        end = time.time()
+        
+        print(f"Completado en {end - start:.2f} segundos")
+        # ~1 segundo en lugar de 3
+
+asyncio.run(main())
+                    </code></pre>
+                </section>
+            </section>
+
+            <!-- Características Únicas -->
+            <section>
+                <section>
+                    <h2>✨ Características Únicas</h2>
+                    <p>Lo que hace especial a Python</p>
+                </section>
+
+                <section>
+                    <h3>Everything is an Object</h3>
+                    <pre><code class="python" data-trim>
+# Incluso las funciones son objetos
+def greet(name):
+    return f"Hello {name}"
+
+# Tienen atributos
+print(greet.__name__)  # 'greet'
+greet.custom_attr = "I'm a function!"
+print(greet.custom_attr)
+
+# Se pueden pasar como argumentos
+def apply_func(func, arg):
+    return func(arg)
+
+result = apply_func(greet, "World")
+print(result)  # "Hello World"
+
+# Incluso los módulos
+import math
+math.custom_data = [1, 2, 3]
+print(math.custom_data)
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Comprehensions</h3>
+                    <p>Expresiones concisas para crear colecciones</p>
+                    <pre><code class="python" data-trim>
+# List comprehension
+squares = [x**2 for x in range(10) if x % 2 == 0]
+print(squares)  # [0, 4, 16, 36, 64]
+
+# Dict comprehension
+word_lengths = {word: len(word) for word in 
+                ['python', 'java', 'javascript']}
+print(word_lengths)  # {'python': 6, 'java': 4, 'javascript': 10}
+
+# Set comprehension
+unique_lengths = {len(word) for word in 
+                  ['hello', 'world', 'python', 'hello']}
+print(unique_lengths)  # {5, 6}
+
+# Generator expression
+sum_squares = sum(x**2 for x in range(1000000))
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Multiple Assignment & Unpacking</h3>
+                    <pre><code class="python" data-trim>
+# Asignación múltiple
+a, b, c = 1, 2, 3
+
+# Intercambio sin variable temporal
+a, b = b, a
+
+# Unpacking con *
+first, *middle, last = [1, 2, 3, 4, 5]
+print(first)   # 1
+print(middle)  # [2, 3, 4]
+print(last)    # 5
+
+# Unpacking en funciones
+def greet(first, last, age):
+    return f"Hi {first} {last}, you are {age}"
+
+person = ("John", "Doe", 30)
+message = greet(*person)
+
+# Unpacking de diccionarios
+data = {"first": "Jane", "last": "Smith", "age": 25}
+message = greet(**data)
+                    </code></pre>
+                </section>
+            </section>
+
+            <!-- Conclusión -->
+            <section>
+                <h2>🎯 Conclusión</h2>
+                <ul>
+                    <li class="fragment">🐍 Python es más que sintaxis simple</li>
+                    <li class="fragment">📚 Biblioteca estándar rica en características</li>
+                    <li class="fragment">🔧 Tooling integrado y poderoso</li>
+                    <li class="fragment">🧘 Filosofía consistente y práctica</li>
+                    <li class="fragment">🌍 Comunidad innovadora y activa</li>
+                    <li class="fragment">✨ Características únicas que lo diferencian</li>
+                </ul>
+                <br>
+                <div class="fragment">
+                    <h3>¡Explora y experimenta!</h3>
+                    <p><small>Los mejores secretos se descubren usándolos</small></p>
+                </div>
+            </section>
+
+            <section>
+                <h1>¡Gracias!</h1>
+                <h3>🐍 ¿Preguntas?</h3>
+                <p>
+                    <small>Continúa explorando los secretos de Python</small>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/highlight/highlight.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+            transition: 'slide',
+            backgroundTransition: 'fade'
+        });
+    </script>
+</body>
+</html>
